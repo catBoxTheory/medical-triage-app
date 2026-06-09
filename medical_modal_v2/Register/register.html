@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用者註冊 - 醫療推薦原型</title>
+    <!-- 引入 EmailJS SDK -->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({
+            publicKey: "O9p0L4hMoTTSilnRr",
+          });
+      })();
+    </script>
+    <!-- 引用外部 CSS -->
+     <script src="script.js"></script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>醫療推薦原型</h1>
+
+        <!-- 1. 使用者註冊區 -->
+        <div id="registerSection">
+            <h2>使用者註冊</h2>
+            <div class="input-group">
+                <label for="email">電子信箱</label>
+                <input type="email" id="email" placeholder="example@gmail.com">
+            </div>
+            <div class="input-group">
+                <label for="password">密碼</label>
+                <input type="password" id="password" placeholder="至少8位,包含英文大寫、小寫和數字">
+            </div>
+            <div class="input-group">
+                <label for="confirmPassword">確認密碼</label>
+                <input type="password" id="confirmPassword" placeholder="請再次輸入密碼">
+            </div>
+            <button id="signupBtn">註冊並寄送驗證碼</button>
+            
+            <div id="verifyCodeSection" style="display:none;">
+                <div class="input-group">
+                    <label for="verifyCode">驗證碼</label>
+                    <input type="text" id="verifyCode" placeholder="6 位數">
+                </div>
+                <button class="verify-btn" id="verifyBtn">送出驗證碼</button>
+            </div>
+        </div>
+
+    <!-- 引用外部 JavaScript -->
+    <script src="script-register.js"></script>
+</body>
+</html>

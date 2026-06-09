@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>醫療推薦原型</title>
+    <!-- 引入 EmailJS SDK -->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({
+            publicKey: "O9p0L4hMoTTSilnRr",
+          });
+      })();
+    </script>
+    <!-- 引用外部 CSS -->
+     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>醫療推薦原型</h1>
+
+        <!-- 1. 使用者註冊區 -->
+        <div id="registerSection">
+            <h2>使用者註冊</h2>
+            <div class="input-group">
+                <label for="email">電子信箱</label>
+                <input type="email" id="email" placeholder="example@mail.com">
+            </div>
+            <div class="input-group">
+                <label for="password">密碼</label>
+                <input type="password" id="password">
+            </div>
+            <button id="signupBtn">註冊並寄送驗證碼</button>
+            
+            <div id="verifyCodeSection" style="display:none;">
+                <div class="input-group">
+                    <label for="verifyCode">驗證碼</label>
+                    <input type="text" id="verifyCode" placeholder="6 位數">
+                </div>
+                <button class="verify-btn" id="verifyBtn">送出驗證碼</button>
+            </div>
+        </div>
+
+        <!-- 2. 健康資訊區 -->
+        <div id="healthInfoSection" style="display:none;">
+            <h2>基本健康資訊</h2>
+            <div class="input-group">
+                <label for="gender">性別</label>
+                <select id="gender">
+                    <option value="M">男</option>
+                    <option value="F">女</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="age">年齡</label>
+                <input type="number" id="age">
+            </div>
+            <div class="input-group">
+                <label for="height">身高(cm)</label>
+                <input type="number" id="height">
+            </div>
+            <div class="input-group">
+                <label for="weight">體重(kg)</label>
+                <input type="number" id="weight">
+            </div>
+            <button id="saveHealthInfoBtn">儲存健康資訊</button>
+        </div>
+
+        <!-- 3. 顯示經緯度 / 自動偵測位置 -->
+        <div id="locationSection" style="display:none;">
+            <h2>您的即時位置</h2>
+            <p>經度：<span id="longitude"></span></p>
+            <p>緯度：<span id="latitude"></span></p>
+        </div>
+
+        <!-- 4. 顯示距離最近的機構（示例僅取前五） -->
+        <div id="recommendSection" style="display:none;">
+            <h2>最近的醫療機構（範例）</h2>
+            <button id="calcNearestBtn">計算最近機構</button>
+            <table id="recommendTable" style="display:none;">
+                <thead>
+                    <tr>
+                        <th>醫療機構</th>
+                        <th>緯度</th>
+                        <th>經度</th>
+                        <th>直線距離(km)</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- 5. 啟動聊天機器人（示例按鈕）-->
+        <div id="chatSection" style="display:none;">
+            <h2>急診聊天機器人</h2>
+            <p>若想與聊天機器人對話，請點擊下方按鈕。</p>
+            <button id="chatBotButton">啟動聊天機器人</button>
+        </div>
+    </div>
+</body>
+</html>

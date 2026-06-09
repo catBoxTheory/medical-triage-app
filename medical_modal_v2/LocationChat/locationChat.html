@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>位置與聊天 - 醫療推薦原型</title>
+    <!-- 引入 EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("O9p0L4hMoTTSilnRr"); // 替換為您的 EmailJS 公鑰
+        })();
+    </script>
+    <!-- 引用外部 JavaScript -->
+    <script src="script-locationChat.js"></script>
+    <!-- 引用外部 CSS -->
+    <link rel="stylesheet" href="../style.css">
+    <style>
+      /* Additional styles if needed */
+      #sidebar {
+          display: none; 
+          position: fixed; 
+          top: 0; 
+          right: 0;
+          width: 300px; 
+          height: 100%; 
+          background-color: #f9f9f9; 
+          box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+          padding: 20px;
+          z-index: 1000; /* Ensure sidebar is above other elements */
+      }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>醫療推薦原型</h1>
+
+        <!-- 顯示經緯度 / 自動偵測位置 和 聊天機器人 -->
+        <div id="locationSection">
+            <h2>您的即時位置</h2>
+            <p>經度：<span id="longitude"></span></p>
+            <p>緯度：<span id="latitude"></span></p>
+        </div>
+    </div>
+    <iframe
+            src="http://127.0.0.1/chatbot/Nx6NVCwUu9K9xZAM" 
+            style="width: 34%; height: 75%; min-height: 350px; position: relative; left: 33%;top: 75%"
+            frameborder="0"
+            allow="microphone">
+    </iframe>
+    <!-- 頭像按鈕 (右上角) -->
+    <button id="profileBtn" style="width: 65px; position: absolute; top: 20px; right: 20px; border-radius: 50%;">
+      <img src="avatar.png" alt="User Avatar" style="width: 40px; height: 40px;">
+  </button>
+
+  <!-- 側欄 (初始隱藏) -->
+  <div id="sidebar">
+      <h2>用戶基本資料</h2>
+      <div class="input-group">
+          <label>年齡</label>
+          <input type="number" id="userAge">
+      </div>
+      <div class="input-group">
+          <label>性別</label>
+          <select id="userGender">
+              <option value="M">男</option>
+              <option value="F">女</option>
+          </select>
+      </div>
+      <div class="input-group">
+          <label>身高(cm)</label>
+          <input type="number" id="userHeight">
+      </div>
+      <div class="input-group">
+          <label>體重(kg)</label>
+          <input type="number" id="userWeight">
+      </div>
+      <div class="input-group">
+          <label>病歷史</label>
+          <input type="text" id="diseaseHistory">
+      </div>
+      <div class="input-group">
+          <label>用藥史</label>
+          <input type="text" id="medicationHistory">
+      </div>
+
+      <button id="saveUserInfoBtn">儲存更新</button>
+      <button id="closeSidebarBtn">關閉側欄</button>
+  </div>
+</body>
+</html>
