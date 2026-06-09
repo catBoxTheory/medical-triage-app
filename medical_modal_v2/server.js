@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mysql2 = require("mysql2");
 const bodyParser = require("body-parser");
@@ -15,11 +16,11 @@ app.use(cors());
 
 // MySQL 連接設置
 const connection = mysql2.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "12345678abC",
-    database: "medical_system"
+    host: process.env.DB_HOST || "localhost",
+    port: process.env.DB_PORT || 3306,
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME || "medical_system"
 });
 
 // 連接到 MySQL
